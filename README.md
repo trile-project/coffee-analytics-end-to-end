@@ -1,56 +1,125 @@
-**# Coffee Analytics End-to-End (120k+ Transactions)
+Coffee Analytics End-to-End (120k+ Transactions)
 
-End-to-end analytics portfolio project based on a Starbucks-like coffee shop dataset.
+End-to-end analytics portfolio project simulating a Starbucks-style retail coffee business.
+This project demonstrates how raw transactional data can be generated, modeled, analyzed, and visualized using a modern analytics stack.
 
-## Tech Stack
-- Python (data generation)
-- MySQL (schema, views, advanced SQL analytics)
-- Excel (pivot analysis)
-- Power BI (dashboard + KPI reporting)
+📌 Project Overview
 
-## Dataset
+This project covers the full analytics workflow:
+
+Synthetic dataset generation (120k+ transactions)
+
+Relational data modeling in MySQL
+
+Analytical SQL (operations + customer analytics)
+
+Excel pivot exploration
+
+Power BI dashboard development
+
+The goal is to showcase real business analytics scenarios including operational performance, customer segmentation, promotion effectiveness, and market basket analysis.
+
+🧰 Tech Stack
+
+Python — dataset generation
+
+MySQL — schema design, data modeling, analytical SQL
+
+Excel — exploratory pivot analysis
+
+Power BI — dashboard & KPI reporting
+
+📊 Dataset
+
 Generated dataset includes:
-- 120k transactions
-- 250k+ line items
-- stores, customers, products, employees
 
-Full dataset is not committed to GitHub.
-Use the generator script to reproduce it.
+120k+ transactions
 
-## How to Run
-### 1) Generate data
-```run project2.py
+250k+ line items
 
-# if coffee_analytics_dataset fail to create -----> run fix_excel.py and recreate_excel.py
+Stores
 
-###2) Load into MySQL
+Customers
+
+Products
+
+Employees
+
+⚠️ The full dataset is not committed due to file size.
+Use the generator scripts to reproduce it locally.
+
+▶️ How to Run
+1️⃣ Generate Data
+
+Run the main generator:
+
+python project2.py
+
+This creates:
+
+CSV files
+
+Excel dataset
+
+Sample analytics outputs
+
+⚠️ If Excel file fails to generate
+
+Excel creation can fail due to memory limits or file locks.
+
+Run recovery scripts:
+
+python fix_excel.py
+python recreate_excel.py
+
+These scripts repair and regenerate the Excel dataset.
+
+2️⃣ Load into MySQL
 
 Run SQL scripts in this order:
 
-sql/00_create_database.sql
+Import CSV files using MySQL Workbench → Table Data Import Wizard
 
-sql/01_create_tables.sql
+Then run:
 
-Import CSVs using Workbench Wizard
+createview_v_sales_line.sql
 
-sql/03_views.sql
+The view v_sales_line provides a BI-ready analytical table.
 
-3) Analytics
+3️⃣ Run Analytics Queries
 
-Run:
+Execute:
 
-sql/04_advanced_analysis.sql
+Peak-hour staffing heatmap (store × hour).sql
+RFM segmentation (window functions).sql
+Promo uplift (baseline vs promo).sql
+Market basket (top category pairs in same transaction).sql
 
-4) Power BI Dashboard
+This includes:
 
-See powerbi/dashboard_instructions.md
-
-Key Analyses
-
-Peak-hour staffing heatmap (store × hour)
+Peak hour operational analysis
 
 RFM customer segmentation
 
-Promotion uplift vs baseline AOV
+Promotion uplift analysis
 
-Market basket (category pairs)**********
+Market basket analysis
+
+4️⃣ Power BI Dashboard
+
+Run:
+
+coffee_analytics.pbix
+
+Dashboards include:
+
+KPI overview
+
+Peak hour heatmap
+
+Store performance scatter plot
+
+Customer segmentation
+
+Promotion effectiveness
+
