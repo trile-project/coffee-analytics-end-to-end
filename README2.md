@@ -86,16 +86,11 @@ python recreate_excel.py
 
 ### 2. Load into MySQL
 
-Run SQL scripts in order:
-
-- sql/00_create_database.sql  
-- sql/01_create_tables.sql  
-
 Import CSV files using MySQL Workbench → Table Data Import Wizard.
 
 Then run:
 
-- sql/03_views.sql  
+- sql/createview_v_sales_line.sql
 
 The view `v_sales_line` provides a BI-ready analytical table.
 
@@ -105,12 +100,14 @@ The view `v_sales_line` provides a BI-ready analytical table.
 
 Execute:
 
-- sql/04_advanced_analysis.sql  
+- Peak-hour staffing heatmap (store × hour).sql
+- RFM segmentation (window functions).sql
+- Promo uplift (baseline vs promo).sql
+- Market basket (top category pairs in same transaction).sql  
 
 Includes:
 
-- Peak hour analysis  
-- Store performance  
+- Peak hour analysis    
 - RFM segmentation  
 - Promotion uplift  
 - Market basket analysis  
